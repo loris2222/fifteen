@@ -21,6 +21,22 @@ public class Move implements Action
 
     public String toString()
     {
-        return ""+moveDirection[0]+"-"+moveDirection[1];
+        if(moveDirection[0]==1 && moveDirection[1]==0)
+        {
+            return "DOWN";
+        }
+        if(moveDirection[0]==-1 && moveDirection[1]==0)
+        {
+            return "UP";
+        }
+        if(moveDirection[0]==0 && moveDirection[1]==1)
+        {
+            return "RIGHT";
+        }
+        if(moveDirection[0]==0 && moveDirection[1]==-1)
+        {
+            return "LEFT";
+        }
+        return "";
     }
 }

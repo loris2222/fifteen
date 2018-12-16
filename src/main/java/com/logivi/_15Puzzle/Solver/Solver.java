@@ -24,8 +24,8 @@ public class Solver
         closedList.add(currentNode.gameState);
         while (!currentNode.gameState.equals(goalState))
         {
-            System.out.println("Heuristic: "+currentNode.gameState.getHeuristic(null));
-            System.out.println(currentNode.gameState);
+            //System.out.println("Heuristic: "+currentNode.gameState.getHeuristic(null));
+            //System.out.println(currentNode.gameState);
             ArrayList<Node> expansion = (ArrayList)tree.expandNode(currentNode, (ArrayList<Action>) currentNode.gameState.getActions());
             for (Node n:expansion)
             {
@@ -39,11 +39,11 @@ public class Solver
             closedList.add(currentNode.gameState);
         }
         System.out.println("Solution found");
-        System.out.println(currentNode.gameState);
+        //System.out.println(currentNode.gameState);
         ArrayList<Action> result = new ArrayList<>();
-        while (currentNode!=null)
+        while (currentNode.parent!=null)
         {
-            System.out.println(currentNode.gameState);
+            //System.out.println(currentNode.gameState);
             result.add(currentNode.action);
             currentNode = currentNode.parent;
         }
