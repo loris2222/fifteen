@@ -51,14 +51,19 @@ public class Board implements GameState
         empty[1]=b.empty[1];
     }
 
-    public Board(int[][] tiles, int[] empty)
+    public Board(int[][] tiles)
     {
         this();
         for(int i=0; i<4; i++)
             for(int j=0; j<4; j++)
+            {
                 this.tiles[i][j]=tiles[i][j];
-        this.empty[0]=empty[0];
-        this.empty[1]=empty[1];
+                if(tiles[i][j]==0)
+                {
+                    this.empty[0]=i;
+                    this.empty[1]=j;
+                }
+            }
     }
 
     @Override
