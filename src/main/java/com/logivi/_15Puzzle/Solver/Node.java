@@ -19,7 +19,7 @@ public class Node implements Comparable<Node>
         parent=null;
         pathCost=0;
         this.gameState = gameState;
-        value=pathCost+gameState.getHeuristic();
+        value=pathCost+gameState.getHeuristic(null);
     }
 
     public Node(GameState gameState, Action action, int oldCost, Node parent)
@@ -28,7 +28,7 @@ public class Node implements Comparable<Node>
         this.action = action;
         this.parent = parent;
         pathCost = oldCost+action.getCost();
-        value=pathCost+gameState.getHeuristic();
+        value=pathCost+gameState.getHeuristic(null);
     }
 
     public Node addChild(GameState gameState, Action action)

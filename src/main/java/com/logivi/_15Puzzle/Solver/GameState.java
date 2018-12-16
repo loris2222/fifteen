@@ -5,7 +5,6 @@ import java.util.List;
 public interface GameState
 {
     public List<Action> getActions();
-    public int getHeuristic();
+    public int getHeuristic(GameState goal);
     public GameState perform(Action action);
-    public boolean equals(GameState other);
 }

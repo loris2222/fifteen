@@ -85,22 +85,25 @@ public class Board implements GameState
     }
 
     @Override
-    public int getHeuristic()
+    public int getHeuristic(GameState goal)
     {
+        //Sum of manhattan distance between every tile and respective position
         int result=0;
         int a=0;
         for(int i=0;i<4;i++)
         {
             for(int j=0;j<4;j++)
             {
-                if(tiles[i][j]!=a)
+                //a is the expected value here
+                if(tiles[i][j]!=0)
                 {
-                    result++;
+                    result += Math.abs(a-tiles[i][j])/4;
+                    result += Math.abs(a-tiles[i][j]+1)%4;
                 }
                 a++;
             }
         }
-        return result;
+        return result*3;
     }
 
     @Override
@@ -120,7 +123,7 @@ public class Board implements GameState
     }
 
     @Override
-    public boolean equals(GameState other)
+    public boolean equals(Object other)
     {
         int result=0;
         for(int i=0;i<4;i++)

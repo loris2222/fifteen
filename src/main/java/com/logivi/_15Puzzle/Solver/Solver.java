@@ -22,10 +22,10 @@ public class Solver
     {
         Node currentNode = tree.root;
         closedList.add(currentNode.gameState);
-        while (!currentNode.equals(goalState))
+        while (!currentNode.gameState.equals(goalState))
         {
-            System.out.println("Heuristic: "+currentNode.gameState.getHeuristic());
-            //System.out.println(currentNode.gameState);
+            System.out.println("Heuristic: "+currentNode.gameState.getHeuristic(null));
+            System.out.println(currentNode.gameState);
             ArrayList<Node> expansion = (ArrayList)tree.expandNode(currentNode, (ArrayList<Action>) currentNode.gameState.getActions());
             for (Node n:expansion)
             {
@@ -38,16 +38,18 @@ public class Solver
             currentNode = frontier.remove(0);
             closedList.add(currentNode.gameState);
         }
+        System.out.println("Solution found");
+        System.out.println(currentNode.gameState);
         ArrayList<Action> result = new ArrayList<>();
         while (currentNode!=null)
         {
+            System.out.println(currentNode.gameState);
             result.add(currentNode.action);
             currentNode = currentNode.parent;
         }
         Collections.reverse(result);
         for (Action action : result)
         {
-
             System.out.println( action );
         }
     }
